@@ -14,9 +14,9 @@ class Spree::BlogEntry < ActiveRecord::Base
   scope :published_after, ->(a){ where("published_at < ?", a) }
 
   if Spree.user_class
-    belongs_to :author, class_name: Spree.user_class.to_s
+    belongs_to :author, class_name: Spree.user_class.to_s, optional: true
   else
-    belongs_to :author
+    belongs_to :author, optional: true
   end
 
   has_one :blog_entry_cover, as: :viewable, dependent: :destroy, class_name: 'Spree::BlogEntryCover'
