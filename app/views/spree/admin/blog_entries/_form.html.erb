@@ -77,9 +77,7 @@
         <%= blog_entry_cover_field.label :alt, t('spree.blog_entry_cover_image') %>
         <% unless @blog_entry.blog_entry_cover.new_record? %>
           <div class="blog_entry_cover_thumbnail thumbnail">
-            <% attachment = @blog_entry.blog_entry_cover.attachment %>
-            <% image_url = image_url(main_app.url_for attachment) if attachment.attached? %>
-            <% image_url = attachment.url(:mini) unless attachment.attached? %>
+            <% image_url = blog_entry_image_url(@blog_entry.blog_entry_cover, :mini) %>
             <%= link_to image_tag(image_url), image_url %>
             <%= @blog_entry.blog_entry_cover.attachment_file_name %><br/>
           </div>
@@ -112,10 +110,7 @@
 	<%= blog_entry_image_field.label :alt, t('spree.blog_entry_featured_image') %>
         <% unless @blog_entry.blog_entry_image.new_record? %>
           <div class="blog_entry_image_thumbnail thumbnail">
-            <% attachment = @blog_entry.blog_entry_image.attachment %>
-            <% image_url = image_url(main_app.url_for attachment) if attachment.attached? %>
-            <% image_url = attachment.url(:mini) unless attachment.attached? %>
-            <%= image_url %>
+            <% image_url = blog_entry_image_url(@blog_entry.blog_entry_image, :mini) %>
             <%= link_to image_tag(image_url), image_url %>
             <%= @blog_entry.blog_entry_image.attachment_file_name %><br/>
           </div>

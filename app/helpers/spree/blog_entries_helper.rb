@@ -53,5 +53,13 @@ module Spree
     def markdown(source)
       source.markdown_to_html rescue ''
     end
+
+    def blog_entry_image_url(image, size)
+      if image.attachment.attached?
+        main_app.url_for(image.attachment)
+      else
+        image.url(size)
+      end
+    end
   end
 end

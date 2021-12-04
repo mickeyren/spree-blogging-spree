@@ -1,6 +1,7 @@
 <div class="blog_entry">
   <div class="blog_entry_image">
-    <%= link_to blog_entry_permalink_short_path(blog_entry.permalink), class: "blog_entry_details_image", style: "background-image: url(#{blog_entry.blog_entry_cover.url('normal') rescue ''})" do %>
+    <% image_url = blog_entry_image_url(blog_entry.blog_entry_cover, :normal) rescue '' %>
+    <%= link_to blog_entry_permalink_short_path(blog_entry.permalink), class: "blog_entry_details_image", style: "background-image: url(#{image_url})" do %>
     <% end %>
   </div>
 

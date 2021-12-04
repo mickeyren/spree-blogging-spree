@@ -11,7 +11,10 @@
 
   <%= render partial: 'spree/blog_entries/blog_entry_details', locals: { blog_entry: @blog_entry } %>
 
-  <img src="<%= @blog_entry.blog_entry_image.url('large') %>">
+  <% if @blog_entry.blog_entry_image %>
+    <% image_url = blog_entry_image_url(@blog_entry.blog_entry_image, :large) %>
+    <%= image_tag(image_url) %>
+  <% end %>
 
   <div class="blog_entry_body">
     <%= @blog_entry.body.html_safe %>
